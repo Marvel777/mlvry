@@ -1,0 +1,78 @@
+{% load static %}
+<!-- Navbar & Hero Start -->
+<!-- header inner -->
+<!-- Nav Bar Start -->
+<header class="top-navbar">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <img src="{% static 'images\ma.png' %}" width="250" height="100" alt="" />
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbars-rs-food">
+                <ul class="navbar-nav ml-auto">
+                    <li
+                    {% if '/' == request.path %}
+                        class="nav-item active"
+                    {% else %}
+                        class="nav-item"
+                    {% endif %}
+                    >
+                    <a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                    <li 
+                    {% if 'products' in request.path %}
+                        class="nav-item active"
+                    {% else %}
+                        class="nav-item"
+                    {% endif %}
+                    ><a class="nav-link" href="{% url 'products' %}">Menu</a></li>
+                    <li 
+                    {% if 'about' in request.path %}
+                        class="nav-item active"
+                    {% else %}
+                        class="nav-item"
+                    {% endif %}
+                    >
+                    <a class="nav-link" href="{% url 'about' %}">About</a></li>
+                    <li
+                    {% if 'signin' in request.path or 'signup' in request.path or 'show_product_favorite' in request.path %}
+                        class="nav-item dropdown active"
+                    {% else %}
+                        class="nav-item dropdown"
+                    {% endif %}
+                    >
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Pages</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-a">
+                            <a class="dropdown-item" href="{% url 'payment' %}">Shipment</a>
+                            {% comment %} <a class="dropdown-item" href="{% url 'show_orders' %}">Orders</a> {% endcomment %}
+                            <a class="dropdown-item" href="{% url 'show_product_favorite' %}">My favorites</a>
+                            <a class="dropdown-item" href="{% url 'cart' %}">My Cart</a>
+                            <a class="dropdown-item" href="{% url 'signin' %}">Sign IN</a>
+                            <a class="dropdown-item" href="{% url 'signup' %}">Sign up</a>
+
+                        </div>
+                    </li>
+                    <li 
+                    {% if 'search' in request.path or 'Advanced ' in request.path %}
+                        class="nav-item dropdown active"
+                    {% else %}
+                        class="nav-item dropdown"
+                    {% endif %}
+                    
+                        class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Search</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-a">
+                            {% comment %} <a class="dropdown-item" href="blog.html">Search</a> {% endcomment %}
+                            <a class="dropdown-item" href="{% url 'search' %}">Advanced Search</a>
+                        </div>
+                    </li>
+                    <li >
+                    {% comment %} <a class="nav-link" href=""></a></li> {% endcomment %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+<!-- End header -->

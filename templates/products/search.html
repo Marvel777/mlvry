@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% block title %} | Search{% endblock title %}
+{% block content %}
+<br><br><br><br>
+
+<div class="about-section-box">
+  <form action="{% url 'products' %}">
+      <div class="container">
+        <div class="center">
+            <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+                <div class="inner-column">
+                    <h1>Name <span>Mlvry Food Restaurant</span></h1>
+                    <div class="row height d-flex justify-content-center align-items-center">
+                      
+                      <div class="col-md-6">
+                
+                        <div class="form">
+                          <i class="fa fa-search"></i>
+                          <input type="text" class="form-control form-input" name="searchname" placeholder="Search anything...">
+                        
+                        </div>
+                      
+                      </div>
+                    
+                    </div>
+                  </div>
+            </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+          </div>
+    </div>
+    <br><br><br>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+          <div class="inner-column">
+              <h1>description <span>Mlvry Food Restaurant</span></h1>
+              <div class="row height d-flex justify-content-center align-items-center">
+    
+                <div class="col-md-6">
+            
+                  <div class="form">
+                    <i class="fa fa-search"></i>
+                    <input type="text" class="form-control form-input" name="searchdesc" placeholder="Search anything...">
+                    
+                  </div>
+                  
+                </div>
+                
+            </div>
+          </div>
+          
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12">
+      </div>
+      
+      
+    </div>
+    <br><br><br>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+          <div class="inner-column">
+              <h1>Price <span>Between</span></h1>
+              <div class="row height d-flex justify-content-center align-items-center">
+    
+                <div class="col-md-6">
+            
+                  <div class="form">
+                    <i class="fa fa-search"></i>
+                    <input type="number" class="form-control form-input" name="searchpricefrom" placeholder="" value="0">
+                    
+                  </div>
+                  
+                </div>
+                
+            </div>
+          </div>
+          
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12">
+      </div>
+      
+      
+    </div>
+    <br><br><br>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12 text-center">
+          <div class="inner-column">
+              <h1><span>And</span></h1>
+              <div class="row height d-flex justify-content-center align-items-center">
+    
+                <div class="col-md-6">
+            
+                  <div class="form">
+                    <i class="fa fa-search"></i>
+                    <input type="number" class="form-control form-input" name="searchpriceto" placeholder="" value="500">
+                    
+                  </div>
+                  
+                </div>
+                
+                
+            </div>
+            
+          </div>
+          
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        
+      </div>
+      
+      
+    </div>
+    
+    </div><br><br>
+    <input type="submit" value="search"/>
+
+    <label class="container">Case Sensitive
+      <input type="checkbox" value='cs'>
+      <span class="checkmark"></span>
+    </label>
+  </form>
+</div>
+
+
+
+
+
+{% endblock content %}
+

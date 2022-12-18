@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} | Cart {% endblock title %}
+{% block content %}
+<br><br><br>
+<div class="about-section-box">
+    <div class="container">
+        <div class="row">
+            <div class="center">
+                <div class="inner-column">
+                    <h1>Welcome To Mlvry <span>Food</span> Restaurant</h1>
+                    <hr>
+                    {% if not request.user.is_authenticated or request.user.is_anonymous %}
+                    <h5 class="alert alert-warning">
+                        You must be 
+                        <a href="{% url 'signin' %}"> Logged in</a>
+                    </h5>
+                    {% elif order %}
+                    <h5>
+                        <span>
+                        Full Name :{{order.user.first_name|add:' '|add:order.user.last_name}}
+                        <hr>
+                        Order Number :{{order.id}}
+                        with total : {{total}}L.E
+                        for {{orderdetails.count}} products
+                        <a href="{% url 'products' %}" class="btn-outline-warning float-right m-1">
+                            Continue Shopping
+                        </a>
+
+                        <a href="{% url 'payment' %}" class="btn-outline-secondary float-right m-1">
+                            Checkout
+                        </a>
+                    </span>
+                    </h5>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Subtotals</th>
+                            <th scope="col">control</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for line in orderdetails %}
+                          <tr>
+                            <th style="font-weight:bold;color:black" scope="row">{{forloop.counter}}</th>
+                            <td style="font-weight:bold;color:orange">{{line.product.name}}</td>
+                            <td><img src="{{line.product.photo.url}}" style="width:80px;height:80px" alt=""></td>
+                            <td style="font-weight:bold;color:maroon">
+                                <a href="{% url 'sub_qty' orderdetails_id=line.id %}" class="btn btn-outline-warning btn-sm">-</a>
+                                {{line.quantaity}}
+                                <a href="{% url 'add_qty' orderdetails_id=line.id %}" class="btn btn-light btn-sm">+</a>
+                            </td>
+                            <td>{{line.price}}</td>
+                            <td style="font-weight:bold;color:darkorange">{% widthratio line.quantaity 1 line.price %}</td>
+                            <td>
+                                <a href="{% url 'remove_from_cart' orderdetails_id=line.id %}"
+                                class="btn btn-warning btn-sm">Remove</a>
+                            </td>
+                          </tr>
+                          {% empty %}
+                          <h5 class="alert alert-warning">
+                            No orders here
+                        </h5>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                    {% else %}
+                    <h5 class="alert alert-warning">
+                        No orders here
+                    </h5>
+                    {% endif %}
+                    <a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Reservation</a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <img src="/about-img.jpg'%}" alt="" class="img-fluid">
+            </div>
+            <div class="col-md-12">
+                <div class="inner-pt">
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+

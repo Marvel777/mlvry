@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %} | About{% endblock title %}
+{% load static %}
+{% block content %}
+<div class="all-page-title page-breadcrumb">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>About Us</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End header -->
+
+<!-- Start About -->
+<div class="about-section-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 text-center">
+                <div class="inner-column">
+                    <h1>Welcome To <span>Mlvry Food Restaurant</span></h1>
+                    <h4>Little Story</h4>
+                    <p>We welcome you to sit back, unwind and appreciate the lovely sights and hints of the ocean while our best gourmet expert sets you up a scrumptious dinner utilizing the best and freshest ingredients.’Company Name’s legacy comes from The parent  Restaurant which was built up in 1963.</p>
+                    <p>Organization Name’ was worked for people in general and has advanced into a combination between exquisite chic and contemporary fine charge.
+                        Enjoy our dazzling dishes and make the most of your eating background with us! </p>
+                    <a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'products' %}">Reservation</a>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <img src="/about-img.jpg'%}" alt="" class="img-fluid">
+            </div>
+            <div class="col-md-12">
+                <div class="inner-pt">
+                    <p>Our menu offers something for everybody, from the light passage of plates of mixed greens and little nibbles to the inconceivable  T Bone steak. Our steaks are sliced in-house to guarantee flawlessness and expertly barbecued at 2,000 degrees.</p>
+                    <p>We will probably give excellent client benefit, the best quality fixings, and a noteworthy affair whether it’s an uncommon occasion, easygoing social event of companions or a sentimental night out on the town.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End About -->
+
+
+<!-- Start Contact info -->
+<div class="contact-imfo-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 arrow-right">
+                <i class="fa fa-volume-control-phone"></i>
+                <div class="overflow-hidden">
+                    <h4>Phone</h4>
+                    <p class="lead">
+                        +01 123-456-4590
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 arrow-right">
+                <i class="fa fa-envelope"></i>
+                <div class="overflow-hidden">
+                    <h4>Email</h4>
+                    <p class="lead">
+                        yourmail@gmail.com
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <i class="fa fa-map-marker"></i>
+                <div class="overflow-hidden">
+                    <h4>Location</h4>
+                    <p class="lead">
+                        800, Lorem Street, US
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Contact info -->
+{% endblock content %}
+

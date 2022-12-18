@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br><br><br><br><br>
+<h1>Google Speech To Text</h1>
+ 
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">start</button>
+    </form>
+
+   <h2>Transcription result</h2>
+   <p>{{ transcribe_result }}</p>
+{% endblock content %}
+
+

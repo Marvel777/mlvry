@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block title %} | Sign In{% endblock title %}
+{% block content %}
+<!-- Start Contact -->
+<!--<div class="map-full"></div>-->
+<div class="contact-box">
+    <div class="container">
+
+    
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="heading-title text-center">
+                    <br><br><br>
+                    <h2>Sign In</h2>
+                    {% if request.user.is_authenticated %}
+                    <h4 class="alert alert-warning"|>
+                    Welcome, {{request.user.username}}, you are logged in,
+                    <a class="text_dark" href="{% url 'logout' %}">Logout</a>
+                    </h4>
+                    {% else %}
+    <form method="POST">
+                        {% csrf_token %}
+                    
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                    
+                    <hr>
+                </div>
+            </div>
+        </div>
+    
+       {% include 'partials/_alerts.html' %}
+        <div class="row">
+            <div class="col-lg-12">
+                <form id="contactForm">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="name" name="user" placeholder="Your Name" required data-error="Please enter your name">
+                                <div class="help-block with-errors"></div>
+                            </div>                                 
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="password" placeholder="Your password" id="email" class="form-control" name="pass" required data-error="Please enter your password">
+                                <div class="help-block with-errors"></div>
+                            </div> 
+                        </div>
+                        <div class="col-md-12">
+                            <div class="submit-button text-center">
+                                <label class="container">Remember Me
+                                <input type="checkbox" name="rememberme" value='cs'>
+                                <span class="checkmark"></span>
+                                <button class="btn btn-common" id="submit" name="btnlogin" type="submit">login</button>
+                                </label>
+                            </div>
+                        </div>
+                    </div>            
+                </form>
+            </div>
+        </div>
+    </form>
+    {% endif %}
+    </div>
+</div>
+<!-- End Contact -->
+
+<!-- Start Contact info -->
+<div class="contact-imfo-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 arrow-right">
+                <i class="fa fa-volume-control-phone"></i>
+                <div class="overflow-hidden">
+                    <h4>Phone</h4>
+                    <p class="lead">
+                        +01 123-456-4590
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 arrow-right">
+                <i class="fa fa-envelope"></i>
+                <div class="overflow-hidden">
+                    <h4>Email</h4>
+                    <p class="lead">
+                        yourmail@gmail.com
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <i class="fa fa-map-marker"></i>
+                <div class="overflow-hidden">
+                    <h4>Location</h4>
+                    <p class="lead">
+                        800, Lorem Street, US
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Contact info -->
+{% endblock content %}
+

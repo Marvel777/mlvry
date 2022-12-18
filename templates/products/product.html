@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %} | Product{% endblock title %}
+{% load static %}
+{% block content %}
+<br><br><br><br><br>
+{% include 'partials/_alerts.html' %}
+<div class="col-lg-4 col-md-6 special-grid drinks">
+    <div class="gallery-single fix">
+        <img src="{{pro.photo.url}}" class="img-fluid" alt="Image">
+        <div class="why-text">
+            <h4>{{pro.name}}</h4>
+            <p>{{pro.description}}</p>
+            <h5> L.E{{pro.price}}</h5>
+        </div>
+    </div>
+<form id="frmaddtocart" action="{% url 'add_to_cart' %}">
+  <!-- Button trigger modal -->
+
+<p><a class="btn btn-lg btn-circle btn-outline-new-white" href="{% url 'product_favorite' pro_id=pro.id %}">*</a></p>
+<p><a class="btn btn-lg btn-circle btn-outline-new-white"data-toggle="modal" data-target="#myModal" href="#">Add Card</a></p>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-center">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Select Quantity</h4>
+        </div>
+        <div class="modal-body">
+          <label for="inputQy">Quantity</label>
+            <input type="number" class="form-control" name="qty" id="inputQy" value="1" placeholder="" required>
+            <input type="hidden" name="pro_id" value="{{pro.id}}">
+            <input type="hidden" name="price" value="{{pro.price}}">
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btnclose" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button class="btn btn-warning" onclick="addtocart()">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!---->
+  
+  
+</form>
+<script>
+  function addtocart(){
+    document.getElementById('btnclose').click();
+    document.getElementById('frmaddtocart').submit();
+
+  }
+</script>
+</div>
+
+{% endblock content %}
+

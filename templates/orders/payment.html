@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% block title %} | Checkout{% endblock title %}
+{% block content %}
+
+<div class="contact-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="heading-title text-center">
+                    <br><br><br>
+                    <h2>Checkout</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+                </div>
+            </div>
+        </div>
+        {% include 'partials/_alerts.html' %}
+
+{% if not request.user.is_authenticated or request.user.is_anonymous %}
+
+<h5 class="alert alert-warning">
+    You must be 
+    <a href="{% url 'signin' %}" class="text-dark">Logged in</a>
+</h5>
+{% elif not order %}
+    <h4 class="alert alert-warning">
+        No Orders Here
+    </h4>
+{% else %}
+
+{% if is_added == True %}
+            <form  method="POST" style="display: none;">
+        {% else %}
+            <form method="POST">
+        {% endif %}
+                {% csrf_token %} 
+                <h5>
+                    <span>
+                    Full Name :{{order.user.first_name|add:' '|add:order.user.last_name}}
+                    <hr>
+                    Order Number :{{order.id}}
+                    with total : {{total}}L.E
+                    for {{orderdetails.count}} products
+                    <a href="{% url 'products' %}" class="btn-outline-warning float-right m-1">
+                        Continue Shopping
+                    </a>
+                </span>
+                <br><br>
+                </h5>
+
+
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-5">
+              <div class="card rounded-3">
+                <div class="card-body p-4">
+                  <div class="text-center mb-4">
+                    <h3>Settings</h3>
+                    <h6>Payment</h6>
+                  </div>
+                  
+                    <p class="fw-bold mb-4 pb-2">Saved cards:</p>
+        
+                    <div class="d-flex flex-row align-items-center mb-4 pb-1">
+                      <img class="img-fluid" src="https://img.icons8.com/color/48/000000/mastercard-logo.png" />
+                      <div class="flex-fill mx-3">
+                        <div class="form-outline">
+                          <input type="text" id="inputcard_number" class="form-control form-control-lg"
+                            value="**** **** **** 3193" name="card_number" required value="{{card_number}}" />
+                          <label class="form-label" for="inputcard_number">Card Number</label>
+                        </div>
+                      </div>
+                      <a href="#!">Remove card</a>
+                    </div>
+        
+                   <!-- <div class="d-flex flex-row align-items-center mb-4 pb-1">
+                      <img class="img-fluid" src="https://img.icons8.com/color/48/000000/visa.png" />
+                      <div class="flex-fill mx-3">
+                        <div class="form-outline">
+                          <input type="text" id="formControlLgXs" class="form-control form-control-lg"
+                            value="**** **** **** 4296" />
+                          <label class="form-label" for="formControlLgXs">Card Number</label>
+                        </div>
+                      </div>
+                      <a href="#!">Remove card</a>
+                    </div>-->
+        
+                    <p class="fw-bold mb-4">Add new card:</p>
+        
+                    <div class="form-outline mb-4">
+                      <input type="text" required value="{{ship_address}}" id="inputship_address" class="form-control form-control-lg"
+                        value=""  name="ship_address" />
+                      <label class="form-label" for="inputship_address">Shipment Address</label>
+                    </div>
+        
+                    <div class="row mb-4">
+                      <div class="col-7">
+                        <div class="form-outline">
+                          <input type="text" id="inputship_address" name="ship_phone" required value="{{ship_phone}}" class="form-control form-control-lg"
+                            value=""  placeholder="MM/YYYY"/>
+                          <label class="form-label" for="inputship_address">Shipment Phone</label>
+                        </div>
+                      </div>
+                      <div class="col-5">
+                        <div class="form-outline">
+                          <input type="text" name="expire" required value="{{expire}}" id="inputexpire" class="form-control form-control-lg"
+                            placeholder="MM/YYYY" />
+                          <label class="form-label" for="inputexpire">Expire</label>
+                        </div>
+                      </div>
+                      <div class="col-5">
+                        <div class="form-outline">
+                          <input type="password" name="security_code" required value="{{security_code}}" id="inputsecurity_code" class="form-control form-control-lg"
+                            placeholder="Cvv" />
+                          <label class="form-label" for="inputsecurity_code">Security Code</label>
+                        </div>
+                      </div>
+                    </div>
+        
+                    <button type="submit" name="btnpayment" class="btn btn-success btn-lg btn-block" >Add card</button>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        
+            
+        </div>
+    </form>
+{% endif %}
+    </div>
+</div>
+<!-- End Contact -->
+
+<!-- Start Contact info -->
+<div class="contact-imfo-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 arrow-right">
+                <i class="fa fa-volume-control-phone"></i>
+                <div class="overflow-hidden">
+                    <h4>Phone</h4>
+                    <p class="lead">
+                        +01 123-456-4590
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 arrow-right">
+                <i class="fa fa-envelope"></i>
+                <div class="overflow-hidden">
+                    <h4>Email</h4>
+                    <p class="lead">
+                        yourmail@gmail.com
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <i class="fa fa-map-marker"></i>
+                <div class="overflow-hidden">
+                    <h4>Location</h4>
+                    <p class="lead">
+                        800, Lorem Street, US
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Contact info -->
+{% endblock content %}
+
+
